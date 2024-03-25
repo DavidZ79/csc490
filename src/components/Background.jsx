@@ -9,7 +9,7 @@ import * as THREE from "three";
 const Background = () => {
 
     /* import image */
-    const texture = useTexture("textures/youtubeBackground.jpg");
+    const texture = useTexture("textures/homersprite.png");
 
     /* viewport object */
     const viewport = useThree((state) => state.viewport);
