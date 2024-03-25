@@ -5,7 +5,9 @@ import { PlainAnimator } from "three-plain-animator/lib/plain-animator";
 
 const Sprite = ({ textureSrc, IconPosition, IconSize }) => {
     const mesh = useRef();
-    const spriteTexture = useLoader(THREE.TextureLoader, textureSrc);
+    //const spriteTexture = useLoader(THREE.TextureLoader, textureSrc);
+    const spriteTexture = useTexture("textures/homersprite.png");
+
     const animator = useRef(null);
 
     useEffect(() => {
