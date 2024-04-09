@@ -1,43 +1,47 @@
 import {Environment, OrbitControls} from "@react-three/drei";
 import {Avatar} from "./Avatar";
 import Background from "./Background.jsx";
-import React, {Suspense} from "react";
+import React, {Suspense, useEffect} from "react";
 import Sprite from "./sprite.jsx";
-
+import {useControls} from "leva";
 
 export const Experience = () => {
+    // get initial values or defaults from local storage
+    const {homerheight: initialHeight} = JSON.parse(localStorage.getItem('levaState')) || {homerheight: 1};
+
+    // leva UI controls
+    const {homerheight} = useControls({homerheight: initialHeight});
+
+    // update local storage whenever Leva control changes
+    useEffect(() => {
+        localStorage.setItem('levaState', JSON.stringify({homerheight}));
+    }, [homerheight]);
 
     return (
         <>
             <OrbitControls enabled={true}/>
 
-            /* -3 to bring avatar closer to camera */
+            {/* position param: [x, y, z] */}
             <Avatar position={[0, -3, 5]} scale={2}/>
 
-            /* lights */
             <Environment preset="sunset"/>
-            <Background />
-            {/*<Cube position={[0, -3, 5]} size={[1, 1, 1]} color={"orange"}/>*/}
 
-            {/*<Suspense fallback={null}>*/}
-            {/*    <Sprite*/}
-            {/*        IconPosition={[0, 0, 3]}*/}
-            {/*        IconSize={[2, 2, 0.05]}*/}
-            {/*        textureSrc="textures/homersprite.png"*/}
-            {/*    />*/}
-            {/*</Suspense>*/}
-
-            {/*<Sprite2 />*/}
+            <Background/>
 
             <Suspense fallback={null}>
-                <Sprite IconPosition={[-2, 0, 0.1]} IconSize={[3, 3, 0]}
+
+                {/* homer sprite */}
+                <Sprite IconPosition={[-2, 0, 0.1]} IconSize={[3, homerheight, 0]}
                         textureSrc="textures/homersprite.png"
-                tilesHorizontally={4} tilesVertically={4} totalTiles={10}/>
+                        SpriteDimensions={[4, 4, 10]}/>
+
+                {/* fire sprite (needs parameter tweaking) */}
                 <Sprite IconPosition={[3, 1, 0.1]} IconSize={[2, 2, 0]} textureSrc="textures/fire.png"
-                tilesHorizontally={8} tilesVertically={7} totalTiles={56}/>
+                        SpriteDimensions={[8, 7, 56]}/>
+
+                {/* megaman sprite */}
                 {/*<Sprite IconPosition={[0, 0, 1]} IconSize={[1, 1, 0]} textureSrc="textures/megamansprite.jpeg" />*/}
             </Suspense>
-
         </>
     );
 };

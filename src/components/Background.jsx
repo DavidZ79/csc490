@@ -1,15 +1,23 @@
-import React, {useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import { useTexture } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useFrame } from "react-three-fiber";
-
 import * as THREE from "three";
+import { useControls } from "leva";
 
 
 const Background = () => {
 
+    // leva UI controls
+    const { background } = useControls( {
+        background: {
+            value: "first",
+            options: ["first", "second"],
+        },
+    })
+
     /* import image */
-    const texture = useTexture("textures/youtubeBackground.jpg");
+    const texture = useTexture("textures/firstBackground.jpg");
 
     /* viewport object */
     const viewport = useThree((state) => state.viewport);
@@ -23,20 +31,6 @@ const Background = () => {
 
         </mesh>
     );
-
-    // /* import image */
-    // const texture = useTexture("textures/homer.gif");
-    //
-    // /* viewport object */
-    // const { viewport } = useThree((state) => state.viewport);
-    //
-    // return (
-    //     <sprite position={[1, 1, -1]}>
-    //         {/* Create a sprite material */}
-    //         <spriteMaterial map={texture} />
-    //
-    //     </sprite>
-    // );
 };
 
 export default Background;

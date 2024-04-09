@@ -1,7 +1,5 @@
 import {Canvas} from "@react-three/fiber";
 import {Experience} from "./components/Experience";
-import {Suspense} from "react";
-import Sprite from "./components/sprite.jsx";
 
 function App() {
     return (
