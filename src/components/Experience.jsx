@@ -30,9 +30,12 @@ export const Experience = () => {
             {/*<Sprite2 />*/}
 
             <Suspense fallback={null}>
-                <Sprite IconPosition={[-2, 0, 0.1]} IconSize={[3, 3, 0]} textureSrc="textures/homersprite.png"/>
-                <Sprite IconPosition={[3, 1, 0.1]} IconSize={[3, 3, 0]} textureSrc="textures/homersprite.png"/>
-
+                <Sprite IconPosition={[-2, 0, 0.1]} IconSize={[3, 3, 0]}
+                        textureSrc="textures/homersprite.png"
+                tilesHorizontally={4} tilesVertically={4} totalTiles={10}/>
+                <Sprite IconPosition={[3, 1, 0.1]} IconSize={[2, 2, 0]} textureSrc="textures/fire.png"
+                tilesHorizontally={8} tilesVertically={7} totalTiles={56}/>
+                {/*<Sprite IconPosition={[0, 0, 1]} IconSize={[1, 1, 0]} textureSrc="textures/megamansprite.jpeg" />*/}
             </Suspense>
 
         </>
