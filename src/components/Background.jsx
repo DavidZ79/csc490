@@ -17,7 +17,7 @@ const Background = () => {
     })
 
     /* import image */
-    const texture = useTexture("textures/firstBackground.jpg");
+    const texture = useTexture("textures/beach.jpg");
 
     /* viewport object */
     const viewport = useThree((state) => state.viewport);
