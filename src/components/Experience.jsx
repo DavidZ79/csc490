@@ -46,11 +46,6 @@ export const Experience = () => {
                 <meshBasicMaterial attach="material" map={balltexture} transparent={true} />
             </mesh>
 
-            //
-            <mesh>
-                <meshBasicMaterial map={videoTexture} toneMapped={false} />
-            </mesh>
-
             <Suspense fallback={null}>
 
                 <Sprite IconPosition={[-2, 0, 0.1]} IconSize={[3, homerheight, 0]}
@@ -61,6 +56,7 @@ export const Experience = () => {
                 {/*        SpriteDimensions={[6, 1, 6]}/>*/}
 
             </Suspense>
+
         </>
     );
 };
