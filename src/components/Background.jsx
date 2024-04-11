@@ -6,20 +6,23 @@ import * as THREE from "three";
 import { useControls } from "leva";
 
 const Background = () => {
-    
     // State to hold the current background option
-    const [selectedBackground, setSelectedBackground] = useState("firstBackground");
+    const [selectedBackground, setSelectedBackground] = useState(() => {
+        // Retrieve the selected background option from localStorage
+        return localStorage.getItem("selectedBackground") || "firstBackground";
+    });
 
     // leva UI controls
     const { background } = useControls({
         background: {
-            value: "firstBackground",
+            value: selectedBackground,
             options: ["firstBackground", "secondBackground"],
         },
     });
 
-    // useEffect to listen for changes in the background option
+    // useEffect to update localStorage when the background option changes
     useEffect(() => {
+        localStorage.setItem("selectedBackground", background);
         setSelectedBackground(background);
     }, [background]);
 
