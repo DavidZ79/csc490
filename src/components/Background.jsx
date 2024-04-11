@@ -16,7 +16,7 @@ const Background = () => {
     const { background } = useControls({
         background: {
             value: selectedBackground,
-            options: ["firstBackground", "secondBackground"],
+            options: ["firstBackground", "secondBackground", "beach"],
         },
     });
 
